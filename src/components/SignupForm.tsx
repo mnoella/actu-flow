@@ -28,7 +28,7 @@ export function SignupForm() {
       
       // Simulate API call delay
       await new Promise((resolve) => setTimeout(resolve, 1000))
-
+      
       // Store user info in localStorage (temporary solution)
       localStorage.setItem(
         "user",
