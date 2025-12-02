@@ -16,13 +16,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   // Vérifier au chargement si l'utilisateur est connecté (localStorage)
   useEffect(() => {
-    const user = localStorage.getItem('user')
-    console.log("[v0] Checking localStorage for user:", user)
+
+    localStorage.removeItem('user'); // déconnecté a chaque redémarrage
+
+    const user = localStorage.getItem('user');
+    console.log("[v0] Checking localStorage for user:", user);
     if (user) {
-      console.log("[v0] User found, setting isAuthenticated to true")
-      setIsAuthenticated(true)
+      console.log("[v0] User found, setting isAuthenticated to true");
+      setIsAuthenticated(true);
     }
-    setIsLoading(false)
+    setIsLoading(false);
   }, [])
 
   const login = () => {

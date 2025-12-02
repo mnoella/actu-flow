@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useNewsQuery } from "@/hooks/useNewsQuery"
 import { useAuth } from '@/lib/auth-context'
@@ -20,13 +20,14 @@ import { Loader2 } from 'lucide-react'
 // ]
 
 export default function Home() {
-  const router = useRouter()
-  const { isAuthenticated } = useAuth()
-  const [selectedCountry, setSelectedCountry] = useState("fr")
+  const router = useRouter();
+  const { isAuthenticated } = useAuth();
+  //const [selectedCountry, setSelectedCountry] = useState("fr")
 
   // useNewsQuery: hook personnalisé qui utilise TanStack Query pour faire l'appel GET à l'API NewsAPI automatiquement
-  const { data: articles, isLoading, error } = useNewsQuery(selectedCountry)
+  const { data: articles, isLoading, error } = useNewsQuery()
 
+  // Si non authentifié => redirection
   useEffect(() => {
     if (!isAuthenticated) {
       router.push('/auth/login')
