@@ -1,4 +1,5 @@
-export default function ActualitesLayout({
+import type React from "react"
+export default function ArticlesLayout({
   children,
 }: {
   children: React.ReactNode
