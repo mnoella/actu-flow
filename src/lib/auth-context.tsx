@@ -1,6 +1,6 @@
-'use client'
+"use client"
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
+import { createContext, useContext, useState, useEffect, type ReactNode } from "react"
 
 interface AuthContextType {
   isAuthenticated: boolean
@@ -16,30 +16,29 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   // Vérifier au chargement si l'utilisateur est connecté (localStorage)
   useEffect(() => {
+    //localStorage.removeItem('user'); // déconnecté a chaque redémarrage
 
-    localStorage.removeItem('user'); // déconnecté a chaque redémarrage
-
-    const user = localStorage.getItem('user');
-    console.log("[v0] Checking localStorage for user:", user);
+    const user = localStorage.getItem("user")
+    console.log("[v0] Checking localStorage for user:", user)
     if (user) {
-      console.log("[v0] User found, setting isAuthenticated to true");
-      setIsAuthenticated(true);
+      console.log("[v0] User found, setting isAuthenticated to true")
+      setIsAuthenticated(true)
     }
-    setIsLoading(false);
+    setIsLoading(false)
   }, [])
 
   const login = () => {
     console.log("[v0] login() called, setting isAuthenticated to true")
     setIsAuthenticated(true)
-    if (!localStorage.getItem('user')) {
-      localStorage.setItem('user', JSON.stringify({ loginTime: new Date().toISOString() }))
+    if (!localStorage.getItem("user")) {
+      localStorage.setItem("user", JSON.stringify({ loginTime: new Date().toISOString() }))
     }
   }
 
   const logout = () => {
     console.log("[v0] logout() called")
     setIsAuthenticated(false)
-    localStorage.removeItem('user')
+    localStorage.removeItem("user")
   }
 
   if (isLoading) {
@@ -53,7 +52,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 export function useAuth() {
   const context = useContext(AuthContext)
   if (context === undefined) {
-    throw new Error('useAuth doit être utilisé dans un AuthProvider')
+    throw new Error("useAuth doit être utilisé dans un AuthProvider")
   }
   return context
 }

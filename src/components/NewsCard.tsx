@@ -1,7 +1,7 @@
 "use client"
 
-import { Calendar, ExternalLink} from "lucide-react";
-import Image from "next/image";
+import { Calendar, ExternalLink } from "lucide-react"
+import Image from "next/image"
 
 interface NewsArticle {
   source: { id: string | null; name: string }
@@ -30,21 +30,18 @@ export default function NewsCard({ article }: NewsCardProps) {
 
   return (
     <article className="bg-white dark:bg-slate-800 rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden flex flex-col h-full">
-      
       {article.urlToImage && (
-        <Image 
-            src={article.urlToImage ?? "/placeholder.svg"} 
-            alt={article.title}
-            width={400}
-            height={192}
-            className="w-full h-48 object-cover" 
-            priority={false}
+        <Image
+          src={article.urlToImage ?? "/placeholder.svg"}
+          alt={article.title}
+          width={400}
+          height={192}
+          className="w-full h-48 object-cover"
+          priority={false}
         />
       )}
 
-      
       <div className="p-4 flex flex-col flex-grow">
-        
         <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase mb-2">
           {article.source.name}
         </span>
