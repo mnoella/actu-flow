@@ -110,21 +110,6 @@ export function LoginForm() {
           </Link>
         </div>
       </form>
-
-      {/* <div className="flex justify-center gap-4 pt-4">
-        <span className="text-xs text-gray-500 uppercase tracking-wide">Suivez-nous</span>
-        <div className="flex gap-3">
-          <a href="#" className="text-gray-400 hover:text-gray-600">
-            𝕏
-          </a>
-          <a href="#" className="text-gray-400 hover:text-gray-600">
-            f
-          </a>
-          <a href="#" className="text-gray-400 hover:text-gray-600">
-            📷
-          </a>
-        </div>
-      </div> */}
     </div>
   )
 }
