@@ -1,7 +1,7 @@
 "use client"
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-import type { ReactElement } from "react"
+import type { ReactNode } from "react"
 import { AuthProvider } from "@/lib/auth-context"
 
 const queryClient = new QueryClient({
@@ -14,7 +14,7 @@ const queryClient = new QueryClient({
 })
 
 interface Props {
-  children: ReactElement
+  children: ReactNode
 }
 
 export function Providers({ children }: Props) {

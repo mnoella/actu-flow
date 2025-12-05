@@ -13,21 +13,17 @@ interface NewsArticle {
   content: string | null
 }
 
-const fetchNews = async (): Promise<NewsArticle[]> => {
-  const response = await fetch("/api/news")
-
-  if (!response.ok) {
-    throw new Error("Failed to fetch news")
-  }
-
-  return response.json()
-}
-
 export function useNewsQuery() {
   return useSuspenseQuery({
     queryKey: ["news"],
-    queryFn: fetchNews,
-    staleTime: 1000 * 60 * 5,
-    retry: 2,
+    queryFn: async (): Promise<NewsArticle[]> => {
+      const response = await fetch("/api/news")
+
+      if (!response.ok) {
+        throw new Error("Faild to fetch neius")
+      }
+
+      return response.json()
+    },
   })
 }

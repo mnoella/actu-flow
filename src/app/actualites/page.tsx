@@ -1,6 +1,6 @@
 "use client"
 
-import { Suspense } from "react"
+import { Suspense, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/lib/auth-context"
 import { NewsGridSuspense } from "@/components/NewsGridSuspense"
@@ -13,8 +13,13 @@ export default function ArticlesPage() {
   const router = useRouter()
   const { isAuthenticated } = useAuth()
 
+  useEffect(() => {
+    if (!isAuthenticated) {
+      router.push("/auth/login")
+    }
+  }, [isAuthenticated, router])
+
   if (!isAuthenticated) {
-    router.push("/auth/login")
     return null
   }
 
@@ -31,7 +36,7 @@ export default function ArticlesPage() {
             <ArrowLeft className="w-4 h-4" />
           </Link>
           <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-3">Tous les articles</h1>
-          <p className="text-lg text-slate-600 dark:text-slate-300">Explorez toutes les actualités en temps réel</p>
+          <p className="text-lg text-slate-600 dark:text-slate-300">Explorez toutes les actualités ici</p>
         </div>
         
         <Suspense fallback={<NewsListFallback />}>

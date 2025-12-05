@@ -16,7 +16,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   // Vérifier au chargement si l'utilisateur est connecté (localStorage)
   useEffect(() => {
-    //localStorage.removeItem('user'); // déconnecté a chaque redémarrage
+    localStorage.removeItem('user'); // déconnecté a chaque redémarrage
 
     const user = localStorage.getItem("user")
     console.log("[v0] Checking localStorage for user:", user)
